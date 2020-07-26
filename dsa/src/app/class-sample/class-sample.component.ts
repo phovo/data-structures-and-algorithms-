@@ -9,13 +9,21 @@ import { VehicleVariant } from '../model/vehicle-variant'
 export class ClassSampleComponent implements OnInit {
 
   vehiclevariant: VehicleVariant = new VehicleVariant(6, "codexxcc") //Khai bao va  KHOI TAO
-  vh:VehicleVariant = new VehicleVariant(1, "xxx", "cccc", "bbbbbbbb", false);
+  vehiclevariant1: VehicleVariant = new VehicleVariant(7, "bbb") //Khai bao va  KHOI TAO
 
   constructor() {
   }
 
   ngOnInit(): void {
+    this.vehiclevariant.name = "Meo";
+    this.vehiclevariant.isActive = false;// oi tuong/bien cua class
     console.log(this.vehiclevariant)
+    console.log(1111111111111)
+    console.log(this.vehiclevariant1)
+    console.log(2222222222)
+    console.log(VehicleVariant.count)
+    console.log(3333)
+    console.log(VehicleVariant.setCount(1)) // class
   }
 
 }
