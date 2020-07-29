@@ -10,22 +10,57 @@ export class DataComponent implements OnInit {
 
   vehicles: VehicleVariant[] = [];
   numArr: Number[]
+  indexValue:number
+  value:number;
+  code:string
+  idCode:number
 
   constructor() { }
 
   ngOnInit(): void {
-    this.numArr = [7, 3, 9, 4, 1];
-    this.vehicles = [new VehicleVariant(5, "ford"), new VehicleVariant(4, "nissan"), new VehicleVariant(8, "toyota"), new VehicleVariant(6, "honda")]
-    this.onSort();
-    
+    this.numArr = [7, 3, 9, 4, 1, 9];
+    this.vehicles = [new VehicleVariant(5, "ford"), new VehicleVariant(4, "nissan"), new VehicleVariant(7, "nissan"), new VehicleVariant(8, "toyota"), new VehicleVariant(6, "honda")]
+    //this.onSort();
+    //this.onSortVehicles();
+    this.value = 9;
+    this.onSearch();
+
+    this.code = "nissan"
+    this.onSearchVehicles(this.code)    
   }
 
-  
+  onSearchVehicles(input: string) {
+    let index = 0;
+    while(index < this.vehicles.length) {
+      if (this.vehicles[index].code === input ) {
+        this.idCode = this.vehicles[index].id
+      }
 
+      index++;
+    }
+  }
 
-  // 7, 3, 9, 4, 1
-  // 1,3, 4, 7, 9
+  onSearch() {
+    for (let index = 0; index < this.numArr.length; index++) {
+      if (this.numArr[index] === this.value) {
+        this.indexValue = index;
+        break;
+      }
+    }
+  }
 
+  onSortVehicles() {
+    for (let out = 0; out < this.vehicles.length; out++) {
+      for (let ind = out; ind < this.vehicles.length; ind++) {
+        if (this.vehicles[out].code > this.vehicles[ind].code) {
+           let elm = this.vehicles[ind];
+           this.vehicles[ind] = this.vehicles[out];
+           this.vehicles[out] = elm;
+
+        }
+      }
+    }
+  }
 
   onSort() {
     let out = 0;

@@ -1,7 +1,7 @@
 import { Vehicle } from './vehicle'
 export class VehicleVariant extends Vehicle {
     static count:number = 6;
-    private id: number;
+     id: number;
     code: string;
     name: string; //public name: string; 
     desc: string;
